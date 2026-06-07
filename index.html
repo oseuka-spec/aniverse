@@ -597,6 +597,96 @@ footer{background:var(--ink2);border-top:1px solid var(--border);padding:3.5rem 
 .hub-gtag:hover{border-color:var(--sakura);color:var(--sakura);background:rgba(255,107,157,.08);transform:translateY(-2px)}
 @media(max-width:900px){.hub-inner{grid-template-columns:1fr;gap:3rem}}
 @media(max-width:600px){.hub-stats-wrap{grid-template-columns:1fr 1fr;gap:.75rem}.hub-stat-card{padding:16px}.hs-num{font-size:28px}}
+
+/* ── STAR / RATING MODAL ── */
+#ratingModal{position:fixed;inset:0;z-index:2300;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.88);backdrop-filter:blur(14px);opacity:0;pointer-events:none;transition:opacity .25s;padding:1.5rem}
+#ratingModal.open{opacity:1;pointer-events:all}
+.rating-box{background:var(--surface);border:1px solid var(--border2);border-radius:22px;padding:2.5rem;max-width:400px;width:100%;text-align:center;position:relative;box-shadow:0 40px 80px rgba(0,0,0,.7)}
+.rating-box-title{font-family:'Bebas Neue',sans-serif;font-size:32px;color:#fff;letter-spacing:2px;margin-bottom:.3rem}
+.rating-box-anime{font-size:13px;color:var(--sakura2);margin-bottom:1.8rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rating-stars-big{display:flex;gap:6px;justify-content:center;direction:rtl;margin-bottom:.6rem}
+.rating-stars-big input{display:none}
+.rating-stars-big label{cursor:pointer;font-size:38px;color:var(--surface3);transition:color .1s,transform .15s;line-height:1}
+.rating-stars-big label:hover,.rating-stars-big label:hover~label,.rating-stars-big input:checked~label{color:var(--gold)}
+.rating-stars-big label:hover{transform:scale(1.25)}
+.rating-score-preview{font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--gold);letter-spacing:2px;line-height:1;margin:6px 0 2px;min-height:60px;transition:all .15s}
+.rating-score-desc{font-size:13px;color:var(--text3);margin-bottom:1.4rem;min-height:20px}
+.rating-close-btn{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--text3);font-size:20px;cursor:pointer;transition:color .2s}
+.rating-close-btn:hover{color:#fff}
+.rating-clear-btn{background:none;border:1px solid var(--border2);color:var(--text3);font-family:'Outfit',sans-serif;font-size:12px;padding:6px 14px;border-radius:8px;cursor:pointer;transition:all .2s;margin-top:.5rem}
+.rating-clear-btn:hover{border-color:var(--sakura);color:var(--sakura)}
+/* ── REVIEW MODAL ── */
+#reviewModal{position:fixed;inset:0;z-index:2200;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.9);backdrop-filter:blur(14px);opacity:0;pointer-events:none;transition:opacity .25s;padding:1.5rem}
+#reviewModal.open{opacity:1;pointer-events:all}
+.review-box{background:var(--surface);border:1px solid var(--border2);border-radius:22px;padding:2.5rem;max-width:540px;width:100%;position:relative;box-shadow:0 40px 80px rgba(0,0,0,.7)}
+.review-box-title{font-family:'Bebas Neue',sans-serif;font-size:32px;color:#fff;letter-spacing:2px;margin-bottom:.3rem}
+.review-box-anime{font-size:13px;color:var(--sakura2);margin-bottom:1.2rem;display:flex;align-items:center;gap:6px}
+.rev-star-row{display:flex;align-items:center;gap:8px;margin:8px 0 12px}
+.rev-star-row span{font-size:12px;color:var(--text3)}
+.rev-stars{display:flex;gap:3px;direction:rtl}
+.rev-stars input{display:none}
+.rev-stars label{cursor:pointer;font-size:22px;color:var(--surface3);transition:color .1s}
+.rev-stars label:hover,.rev-stars label:hover~label,.rev-stars input:checked~label{color:var(--gold)}
+.review-textarea{width:100%;min-height:130px;background:var(--surface2);border:1px solid var(--border2);border-radius:10px;padding:13px 15px;font-family:'Outfit',sans-serif;font-size:14px;color:#fff;outline:none;resize:vertical;caret-color:var(--sakura);line-height:1.7;margin-bottom:.5rem;transition:border-color .2s}
+.review-textarea:focus{border-color:var(--sakura)}
+.review-textarea::placeholder{color:var(--text3)}
+.review-char-count{font-size:11px;color:var(--text3);text-align:right;margin-bottom:1rem}
+.review-submit-row{display:flex;gap:.7rem;justify-content:flex-end}
+.review-close-btn{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--text3);font-size:20px;cursor:pointer;transition:color .2s}
+.review-close-btn:hover{color:#fff}
+/* ── CONFIRM MODAL ── */
+#confirmModal{position:fixed;inset:0;z-index:2500;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.88);backdrop-filter:blur(14px);opacity:0;pointer-events:none;transition:opacity .2s;padding:1.5rem}
+#confirmModal.open{opacity:1;pointer-events:all}
+.confirm-box{background:var(--surface);border:1px solid var(--border2);border-radius:18px;padding:2rem;max-width:360px;width:100%;text-align:center;box-shadow:0 30px 60px rgba(0,0,0,.7)}
+.confirm-box h3{font-family:'Bebas Neue',sans-serif;font-size:28px;color:#fff;letter-spacing:2px;margin-bottom:.5rem}
+.confirm-box p{font-size:14px;color:var(--text2);margin-bottom:1.5rem;line-height:1.6}
+.confirm-btns{display:flex;gap:.7rem;justify-content:center}
+.confirm-danger{padding:0 22px;height:40px;border-radius:9px;border:none;background:linear-gradient(135deg,#ff4444,#cc2222);color:#fff;font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s}
+.confirm-danger:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(255,68,68,.4)}
+.confirm-cancel{padding:0 22px;height:40px;border-radius:9px;border:1px solid var(--border2);background:transparent;color:var(--text);font-family:'Outfit',sans-serif;font-size:13px;cursor:pointer;transition:all .2s}
+.confirm-cancel:hover{background:var(--surface2)}
+/* ── DETAIL SCORE WIDGET ── */
+.detail-score-widget{background:var(--surface);border:1px solid var(--border2);border-radius:var(--radius);padding:18px 20px;margin-top:1.2rem;max-width:520px}
+.dsw-title{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:10px}
+.dsw-row{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.dsw-rate-btn{padding:8px 16px;border-radius:9px;border:1px solid rgba(255,209,102,.4);background:rgba(255,209,102,.08);color:var(--gold);font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:5px}
+.dsw-rate-btn:hover{background:rgba(255,209,102,.18);border-color:var(--gold)}
+.dsw-review-btn{padding:8px 16px;border-radius:9px;border:1px solid rgba(179,136,255,.4);background:rgba(179,136,255,.08);color:var(--purple);font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:5px}
+.dsw-review-btn:hover{background:rgba(179,136,255,.18);border-color:var(--purple)}
+/* ── MY SCORE BADGE ── */
+.my-score-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:8px;background:rgba(255,209,102,.12);border:1px solid rgba(255,209,102,.3);cursor:pointer;transition:all .2s;margin-left:8px}
+.my-score-badge:hover{background:rgba(255,209,102,.22)}
+.my-score-badge .msb-num{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--gold);letter-spacing:1px;line-height:1}
+.my-score-badge .msb-label{font-size:9px;color:var(--text3);line-height:1;margin-top:2px}
+/* ── MY SCORE IN LIST ── */
+.score-tap{cursor:pointer;transition:all .2s;border-radius:7px;padding:3px 7px;border:1px dashed var(--border2)}
+.score-tap:hover{border-color:var(--gold);background:rgba(255,209,102,.08)}
+.score-tap.rated{border-color:rgba(255,209,102,.3);background:rgba(255,209,102,.07)}
+/* ── IN-LIST CARD BADGE ── */
+.ac-in-list-badge{position:absolute;top:9px;left:9px;width:22px;height:22px;border-radius:7px;background:rgba(6,214,160,.9);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;z-index:4;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+.ac-in-list-badge svg{width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2.5}
+/* ── WRITE REVIEW CTA ── */
+.write-review-cta{background:var(--surface);border:1px dashed var(--border2);border-radius:var(--radius);padding:1.8rem;text-align:center;cursor:pointer;transition:all .3s;margin-bottom:2rem;display:block}
+.write-review-cta:hover{border-color:var(--sakura);background:rgba(255,107,157,.04);transform:translateY(-2px)}
+.write-review-cta h3{font-family:'Bebas Neue',sans-serif;font-size:24px;color:#fff;letter-spacing:2px;margin-bottom:.3rem}
+.write-review-cta p{font-size:13px;color:var(--text3)}
+/* ── REV SORT ROW ── */
+.rev-sort-row{display:flex;align-items:center;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.rev-sort-btn{padding:5px 14px;border-radius:100px;border:1px solid var(--border);background:var(--surface);color:var(--text2);font-size:12px;cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif}
+.rev-sort-btn.active,.rev-sort-btn:hover{border-color:var(--sakura);background:rgba(255,107,157,.1);color:var(--sakura)}
+/* ── USER REVIEW CARDS ── */
+.my-rev-card{padding:16px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--surface);margin-bottom:.7rem;position:relative}
+.my-rev-card:hover{border-color:var(--border2)}
+.my-rev-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.my-rev-thumb{width:36px;height:52px;border-radius:6px;object-fit:cover;flex-shrink:0;cursor:pointer}
+.my-rev-info{flex:1;min-width:0}
+.my-rev-title{font-size:13px;font-weight:600;color:#fff;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.my-rev-title:hover{color:var(--sakura)}
+.my-rev-date{font-size:11px;color:var(--text3)}
+.my-rev-score{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--gold);letter-spacing:1px;line-height:1;flex-shrink:0}
+.my-rev-del{position:absolute;top:10px;right:10px;background:none;border:none;color:var(--text3);cursor:pointer;font-size:13px;transition:color .2s;padding:3px}
+.my-rev-del:hover{color:var(--sakura)}
+.my-rev-text{font-size:13px;line-height:1.7;color:var(--text2)}
 </style>
 </head>
 <body>
@@ -1255,6 +1345,15 @@ footer{background:var(--ink2);border-top:1px solid var(--border);padding:3.5rem 
 <div class="page" id="page-reviews">
   <div style="padding:3rem">
     <div class="sec-header"><div><div class="sec-label"><svg class="sec-icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H8l-5 3V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> Recenzje</div><h1 class="sec-title">OPINIE <em>SPOŁECZNOŚCI</em></h1></div></div>
+    <div class="write-review-cta" onclick="openReviewModal(null,'','')"">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--sakura)" stroke-width="1.8" style="margin-bottom:.5rem"><path d="M21 15a2 2 0 01-2 2H8l-5 3V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <h3>Napisz recenzję</h3>
+      <p>Podziel się opinią o swoim ulubionym anime</p>
+    </div>
+    <div class="rev-sort-row">
+      <button class="rev-sort-btn active" onclick="renderReviewsPage('newest',this)">Najnowsze</button>
+      <button class="rev-sort-btn" onclick="renderReviewsPage('mine',this)">Moje recenzje</button>
+    </div>
     <div id="reviewsContent"></div>
   </div>
   <footer>
@@ -1277,6 +1376,78 @@ footer{background:var(--ink2);border-top:1px solid var(--border);padding:3.5rem 
       <div class="footer-copy">© 2026 AniVerse</div>
     </div>
   </footer>
+</div>
+
+
+<!-- RATING MODAL -->
+<div id="ratingModal" onclick="if(event.target===this)closeRatingModal()">
+  <div class="rating-box">
+    <button class="rating-close-btn" onclick="closeRatingModal()">✕</button>
+    <div class="rating-box-title">OCEŃ ANIME</div>
+    <div class="rating-box-anime" id="rmAnimeTitle">—</div>
+    <div class="rating-stars-big" id="rmStars">
+      <input type="radio" name="rmStar" id="rmS10" value="10"><label for="rmS10" title="Arcydzieło">★</label>
+      <input type="radio" name="rmStar" id="rmS9"  value="9" ><label for="rmS9"  title="Świetne">★</label>
+      <input type="radio" name="rmStar" id="rmS8"  value="8" ><label for="rmS8"  title="Bardzo dobre">★</label>
+      <input type="radio" name="rmStar" id="rmS7"  value="7" ><label for="rmS7"  title="Dobre">★</label>
+      <input type="radio" name="rmStar" id="rmS6"  value="6" ><label for="rmS6"  title="W porządku">★</label>
+      <input type="radio" name="rmStar" id="rmS5"  value="5" ><label for="rmS5"  title="Przeciętne">★</label>
+      <input type="radio" name="rmStar" id="rmS4"  value="4" ><label for="rmS4"  title="Słabe">★</label>
+      <input type="radio" name="rmStar" id="rmS3"  value="3" ><label for="rmS3"  title="Złe">★</label>
+      <input type="radio" name="rmStar" id="rmS2"  value="2" ><label for="rmS2"  title="Bardzo złe">★</label>
+      <input type="radio" name="rmStar" id="rmS1"  value="1" ><label for="rmS1"  title="Koszmar">★</label>
+    </div>
+    <div class="rating-score-preview" id="rmScorePreview">—</div>
+    <div class="rating-score-desc"    id="rmScoreDesc">Kliknij gwiazdkę</div>
+    <button class="auth-submit" id="rmConfirmBtn" onclick="confirmRating()" style="opacity:.4;pointer-events:none;margin-top:4px">Zapisz ocenę</button><br>
+    <button class="rating-clear-btn"  onclick="clearCurrentRating()">Usuń ocenę</button>
+  </div>
+</div>
+
+<!-- REVIEW MODAL -->
+<div id="reviewModal" onclick="if(event.target===this)closeReviewModal()">
+  <div class="review-box">
+    <button class="review-close-btn" onclick="closeReviewModal()">✕</button>
+    <div class="review-box-title">NAPISZ RECENZJĘ</div>
+    <div class="review-box-anime">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--sakura)" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7L12 16.8 5.7 21l2.3-7-6-4.6h7.6z"/></svg>
+      <span id="rvAnimeTitle">—</span>
+    </div>
+    <div class="rev-star-row">
+      <span>Ocena:</span>
+      <div class="rev-stars" id="rvStars">
+        <input type="radio" name="rvStar" id="rvS10" value="10"><label for="rvS10">★</label>
+        <input type="radio" name="rvStar" id="rvS9"  value="9" ><label for="rvS9">★</label>
+        <input type="radio" name="rvStar" id="rvS8"  value="8" ><label for="rvS8">★</label>
+        <input type="radio" name="rvStar" id="rvS7"  value="7" ><label for="rvS7">★</label>
+        <input type="radio" name="rvStar" id="rvS6"  value="6" ><label for="rvS6">★</label>
+        <input type="radio" name="rvStar" id="rvS5"  value="5" ><label for="rvS5">★</label>
+        <input type="radio" name="rvStar" id="rvS4"  value="4" ><label for="rvS4">★</label>
+        <input type="radio" name="rvStar" id="rvS3"  value="3" ><label for="rvS3">★</label>
+        <input type="radio" name="rvStar" id="rvS2"  value="2" ><label for="rvS2">★</label>
+        <input type="radio" name="rvStar" id="rvS1"  value="1" ><label for="rvS1">★</label>
+      </div>
+      <span id="rvStarVal" style="font-size:13px;color:var(--gold);font-weight:700;min-width:28px;direction:ltr"></span>
+    </div>
+    <textarea class="review-textarea" id="rvTextarea" placeholder="Podziel się swoją opinią... (min. 20 znaków)" maxlength="2000" oninput="document.getElementById('rvCharCount').textContent=this.value.length"></textarea>
+    <div class="review-char-count"><span id="rvCharCount">0</span>/2000</div>
+    <div class="review-submit-row">
+      <button class="btn-ghost" style="height:40px;font-size:13px;padding:0 16px" onclick="closeReviewModal()">Anuluj</button>
+      <button class="btn-cta"   style="height:40px;font-size:13px;padding:0 18px" onclick="submitReview()">Opublikuj ›</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONFIRM MODAL -->
+<div id="confirmModal">
+  <div class="confirm-box">
+    <h3 id="cnfTitle">POTWIERDŹ</h3>
+    <p  id="cnfMsg">Czy na pewno?</p>
+    <div class="confirm-btns">
+      <button class="confirm-cancel"  onclick="resolveConfirm(false)">Anuluj</button>
+      <button class="confirm-danger"  id="cnfOkBtn"  onclick="resolveConfirm(true)">Usuń</button>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -1603,7 +1774,7 @@ function showPage(name){
   if(navEl) navEl.classList.add('active');
   if(name==='browse') loadBrowse();
   if(name==='ranking') loadRanking();
-  if(name==='reviews') loadReviews();
+  if(name==='reviews') renderReviewsPage('newest');
   if(name==='mylist'){renderMyList('all');updateListCounts();}
   if(name==='profile') renderProfile();
 }
@@ -2017,6 +2188,19 @@ async function showDetail(id){
           </div>
           <div class="detail-score-big" style="color:${scoreColor(score)}">★ ${score} <span style="font-size:18px;color:var(--text3)">(${formatNum(a.scored_by)} głosów)</span></div>
           <div style="margin-top:1rem;display:flex;gap:.6rem;flex-wrap:wrap" id="statusBtns">${statusBtns}</div>
+          <div class="detail-score-widget">
+            <div class="dsw-title">Twoja ocena</div>
+            <div class="dsw-row">
+              <button class="dsw-rate-btn" onclick="openRatingModal(${a.mal_id},'${esc(a.title)}','${img}')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7L12 16.8 5.7 21l2.3-7-6-4.6h7.6z"/></svg>
+                ${listEntry&&listEntry.my_score>0?'Twoja ocena: '+listEntry.my_score+'/10':'Oceń to anime'}
+              </button>
+              <button class="dsw-review-btn" onclick="openReviewModal(${a.mal_id},'${esc(a.title)}','${img}')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H8l-5 3V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                Napisz recenzję
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -2096,7 +2280,7 @@ function renderMyList(filter){
   el.innerHTML=`
     <table class="list-table">
       <thead><tr>
-        <th>Tytuł</th><th>Status</th><th>Postęp</th><th>Ocena</th><th>Studio/Info</th><th>Akcje</th>
+        <th>Tytuł</th><th>Status</th><th>Postęp</th><th>Ocena</th><th>Moja ocena</th><th>Akcje</th>
       </tr></thead>
       <tbody>${items.map(e=>`
         <tr>
@@ -2111,7 +2295,12 @@ function renderMyList(filter){
             <span class="prog-txt">/${e.eps||'—'}</span>
           </div></td>
           <td><span class="tbl-score" style="color:${scoreColor(e.score)}">${e.score?parseFloat(e.score).toFixed(1):'—'}</span></td>
-          <td style="font-size:12px;color:var(--text3)">${e.type||'TV'}</td>
+          <td>
+            <div class="score-tap ${e.my_score>0?'rated':''}" onclick="openRatingModal(${e.mal_id},'${esc(e.title)}','${e.img}')" title="Kliknij aby ocenić">
+              ${e.my_score>0?'<span style="font-family:\'Bebas Neue\',sans-serif;font-size:18px;color:var(--gold);letter-spacing:1px">'+e.my_score+'</span><span style="font-size:10px;color:var(--text3)">/10</span>':
+              '<span style="font-size:10px;color:var(--text3)">★ Oceń</span>'}
+            </div>
+          </td>
           <td>
             <div style="display:flex;gap:6px">
               <button class="btn-icon" onclick="removeFromList(${e.mal_id})" title="Usuń z listy" style="width:30px;height:30px;border-radius:8px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></button>
@@ -2197,6 +2386,8 @@ function renderProfile(){
   const completed = Object.values(myList).filter(e=>e.status==='completed').length;
   const watching = Object.values(myList).filter(e=>e.status==='watching').length;
   const avgScore = Object.values(myList).filter(e=>e.score>0).reduce((a,b,_,arr)=>a+parseFloat(b.score)/arr.length,0);
+  const myRevCount=getUserReviews().filter(r=>r.username===user.username).length;
+  const avgMyScore=Object.values(myList).filter(e=>e.my_score>0).reduce((s,e,_,a)=>s+e.my_score/a.length,0);
   el.innerHTML=`
     <div class="profile-hero">
       <div class="profile-avatar-big user-avatar" style="width:90px;height:90px;font-size:32px;border-radius:20px">${user.username.slice(0,2).toUpperCase()}</div>
@@ -2207,7 +2398,8 @@ function renderProfile(){
           <div class="psr-item"><div class="psr-num" style="color:var(--cyan)">${watching}</div><div class="psr-label">Oglądane</div></div>
           <div class="psr-item"><div class="psr-num" style="color:var(--purple)">${completed}</div><div class="psr-label">Ukończone</div></div>
           <div class="psr-item"><div class="psr-num">${total}</div><div class="psr-label">Na liście</div></div>
-          <div class="psr-item"><div class="psr-num" style="color:var(--gold)">${avgScore>0?avgScore.toFixed(1):'—'}</div><div class="psr-label">Śr. ocena</div></div>
+          <div class="psr-item"><div class="psr-num" style="color:var(--gold)">${avgMyScore>0?avgMyScore.toFixed(1):avgScore>0?avgScore.toFixed(1):'—'}</div><div class="psr-label">Śr. moja ocena</div></div>
+          <div class="psr-item"><div class="psr-num" style="color:var(--purple)">${myRevCount}</div><div class="psr-label">Recenzji</div></div>
         </div>
       </div>
       <div style="margin-left:auto">
@@ -2322,6 +2514,10 @@ document.addEventListener('keydown',e=>{
   if(e.key==='Escape'){
     document.getElementById('searchModal').classList.remove('open');
     document.getElementById('authModal').classList.remove('open');
+    document.getElementById('infoModal').classList.remove('open');
+    closeRatingModal();
+    closeReviewModal();
+    resolveConfirm(false);
   }
 });
 
@@ -2468,6 +2664,269 @@ async function loadMalStats(){
   // AniVerse own stats
   initAniStats();
 }
+
+
+// ═══════════════════════════════════════════════════════════
+// UTILITIES
+// ═══════════════════════════════════════════════════════════
+function getUserReviews(){try{return JSON.parse(localStorage.getItem('av_reviews')||'[]')}catch(e){return[]}}
+function saveUserReviews(r){try{localStorage.setItem('av_reviews',JSON.stringify(r))}catch(e){}}
+
+// ═══════════════════════════════════════════════════════════
+// CONFIRM MODAL
+// ═══════════════════════════════════════════════════════════
+let _cnfResolve=null;
+function showConfirm(title,msg,okLabel){
+  okLabel=okLabel||'Usuń';
+  return new Promise(function(res){
+    _cnfResolve=res;
+    document.getElementById('cnfTitle').textContent=title;
+    document.getElementById('cnfMsg').textContent=msg;
+    document.getElementById('cnfOkBtn').textContent=okLabel;
+    document.getElementById('confirmModal').classList.add('open');
+  });
+}
+function resolveConfirm(val){
+  document.getElementById('confirmModal').classList.remove('open');
+  if(_cnfResolve){_cnfResolve(val);_cnfResolve=null;}
+}
+
+// ═══════════════════════════════════════════════════════════
+// RATING MODAL
+// ═══════════════════════════════════════════════════════════
+var SCORE_DESC={1:'Koszmar',2:'Bardzo złe',3:'Złe',4:'Słabe',5:'Przeciętne',6:'W porządku',7:'Dobre',8:'Bardzo dobre',9:'Świetne',10:'Arcydzieło'};
+var _rmCtx={id:null,title:'',img:''};
+
+function openRatingModal(id,title,img){
+  if(!user){openAuth('login');showToast('warn','Zaloguj się, aby oceniać!');return;}
+  _rmCtx={id:id,title:title,img:img};
+  document.getElementById('rmAnimeTitle').textContent=title||'—';
+  var prev=document.getElementById('rmScorePreview');
+  var desc=document.getElementById('rmScoreDesc');
+  var btn=document.getElementById('rmConfirmBtn');
+  prev.textContent='—';
+  desc.textContent='Kliknij gwiazdkę';
+  btn.style.opacity='.4';
+  btn.style.pointerEvents='none';
+  var inputs=document.querySelectorAll('#rmStars input');
+  inputs.forEach(function(inp){
+    inp.checked=false;
+    inp.onchange=function(){
+      var v=parseInt(inp.value);
+      prev.textContent=v+'/10';
+      desc.textContent=SCORE_DESC[v]||'';
+      btn.style.opacity='1';
+      btn.style.pointerEvents='all';
+    };
+  });
+  var existing=myList[id]&&myList[id].my_score;
+  if(existing>0){
+    var el2=document.getElementById('rmS'+existing);
+    if(el2){el2.checked=true;prev.textContent=existing+'/10';desc.textContent=SCORE_DESC[existing]||'';btn.style.opacity='1';btn.style.pointerEvents='all';}
+  }
+  document.getElementById('ratingModal').classList.add('open');
+}
+function closeRatingModal(){document.getElementById('ratingModal').classList.remove('open');}
+
+function confirmRating(){
+  var checked=document.querySelector('#rmStars input:checked');
+  if(!checked)return;
+  var score=parseInt(checked.value);
+  var id=_rmCtx.id,title=_rmCtx.title,img=_rmCtx.img;
+  if(!id)return;
+  if(!myList[id])myList[id]={mal_id:id,title:title,img:img,score:0,type:'TV',eps:'—',status:'planned',my_score:0,progress:0};
+  myList[id].my_score=score;
+  saveList();
+  closeRatingModal();
+  showToast('vote','Oceniono: '+score+'/10 — '+SCORE_DESC[score]);
+  if(document.getElementById('page-mylist').classList.contains('active'))renderMyList('all');
+}
+
+function clearCurrentRating(){
+  var id=_rmCtx.id,title=_rmCtx.title;
+  if(!id||!myList[id]){closeRatingModal();return;}
+  myList[id].my_score=0;
+  saveList();
+  closeRatingModal();
+  showToast('info','Usunięto ocenę dla "'+title+'"');
+  if(document.getElementById('page-mylist').classList.contains('active'))renderMyList('all');
+}
+
+// ═══════════════════════════════════════════════════════════
+// REVIEW MODAL
+// ═══════════════════════════════════════════════════════════
+var _rvCtx={id:null,title:'',img:''};
+
+function openReviewModal(id,title,img){
+  if(!user){openAuth('login');showToast('warn','Zaloguj się, aby pisać recenzje!');return;}
+  _rvCtx={id:id,title:title||'',img:img||''};
+  document.getElementById('rvAnimeTitle').textContent=title||'Wybierz anime';
+  document.getElementById('rvTextarea').value='';
+  document.getElementById('rvCharCount').textContent='0';
+  document.getElementById('rvStarVal').textContent='';
+  document.querySelectorAll('#rvStars input').forEach(function(inp){
+    inp.checked=false;
+    inp.onchange=function(){document.getElementById('rvStarVal').textContent=inp.value+'/10';};
+  });
+  var existing=getUserReviews().find(function(r){return r.mal_id==id&&r.username===user.username;});
+  if(existing){
+    document.getElementById('rvTextarea').value=existing.text;
+    document.getElementById('rvCharCount').textContent=existing.text.length;
+    if(existing.score){var el2=document.getElementById('rvS'+existing.score);if(el2){el2.checked=true;document.getElementById('rvStarVal').textContent=existing.score+'/10';}}
+  }
+  document.getElementById('reviewModal').classList.add('open');
+  setTimeout(function(){document.getElementById('rvTextarea').focus();},80);
+}
+function closeReviewModal(){document.getElementById('reviewModal').classList.remove('open');}
+
+function submitReview(){
+  var text=document.getElementById('rvTextarea').value.trim();
+  if(text.length<20){showToast('warn','Minimum 20 znaków!');return;}
+  var sc2=document.querySelector('#rvStars input:checked');
+  var score=sc2?parseInt(sc2.value):0;
+  var id=_rvCtx.id,title=_rvCtx.title,img=_rvCtx.img;
+  var reviews=getUserReviews().filter(function(r){return!(r.mal_id==id&&r.username===user.username);});
+  reviews.unshift({id:Date.now(),mal_id:id,title:title,img:img,username:user.username,score:score,text:text,date:new Date().toISOString()});
+  saveUserReviews(reviews);
+  if(score&&id&&myList[id]){myList[id].my_score=score;saveList();}
+  closeReviewModal();
+  showToast('ok','Recenzja opublikowana! 🎉');
+  if(document.getElementById('page-reviews').classList.contains('active'))renderReviewsPage('mine',null);
+  if(document.getElementById('page-profile').classList.contains('active'))renderProfile();
+}
+
+function deleteUserReview(revId){
+  showConfirm('USUŃ RECENZJĘ','Czy na pewno chcesz usunąć tę recenzję?').then(function(ok){
+    if(!ok)return;
+    var reviews=getUserReviews().filter(function(r){return r.id!==revId;});
+    saveUserReviews(reviews);
+    showToast('del','Recenzja usunięta');
+    if(document.getElementById('page-reviews').classList.contains('active'))renderReviewsPage('mine',null);
+    if(document.getElementById('page-profile').classList.contains('active'))renderProfile();
+  });
+}
+
+// ═══════════════════════════════════════════════════════════
+// REVIEWS PAGE
+// ═══════════════════════════════════════════════════════════
+var _revMode='newest';
+
+function renderReviewsPage(mode,btn){
+  if(mode)_revMode=mode;
+  if(btn){
+    document.querySelectorAll('.rev-sort-btn').forEach(function(b){b.classList.remove('active');});
+    btn.classList.add('active');
+  }
+  var el=document.getElementById('reviewsContent');
+  if(!el)return;
+
+  if(_revMode==='mine'){
+    if(!user){
+      el.innerHTML='<div style="text-align:center;padding:3rem;color:var(--text3)"><p>Zaloguj się, aby zobaczyć swoje recenzje.</p><br><button class="btn-cta" onclick="openAuth(\'login\')">Zaloguj się</button></div>';
+      return;
+    }
+    var mine=getUserReviews().filter(function(r){return r.username===user.username;});
+    if(!mine.length){
+      el.innerHTML='<div style="text-align:center;padding:3rem;color:var(--text3)"><p>Nie masz jeszcze żadnych recenzji.</p><br><button class="btn-cta" onclick="openReviewModal(null,\'\',\'\')">Napisz pierwszą</button></div>';
+      return;
+    }
+    var html='<div class="review-grid">';
+    mine.forEach(function(r){
+      var initials=user.username.slice(0,2).toUpperCase();
+      var scoreColor=r.score?'var(--gold)':'var(--text3)';
+      var scoreVal=r.score||'—';
+      var animeHtml='';
+      if(r.title){
+        var imgHtml=r.img?'<img src="'+r.img+'" style="width:18px;height:26px;border-radius:3px;object-fit:cover"> ':' ';
+        animeHtml='<div class="rev-anime" style="cursor:pointer" onclick="showDetail('+r.mal_id+')">'+imgHtml+r.title+'</div>';
+      }
+      html+='<div class="rev-card">';
+      html+='<div class="rev-header">';
+      html+='<div class="rev-avatar" style="background:linear-gradient(135deg,var(--sakura),var(--purple2))">'+initials+'</div>';
+      html+='<div><div class="rev-name">'+user.username+'</div><div class="rev-meta">'+new Date(r.date).toLocaleDateString('pl-PL')+'</div></div>';
+      html+='<div class="rev-score" style="color:'+scoreColor+'">'+scoreVal+'</div>';
+      html+='</div>';
+      html+=animeHtml;
+      html+='<p class="rev-text">'+r.text+'</p>';
+      html+='<div class="rev-footer">';
+      html+='<button onclick="openReviewModal('+r.mal_id+',\''+esc(r.title||'')+'\',\''+esc(r.img||'')+'\')" style="background:none;border:none;font-size:11px;color:var(--text3);cursor:pointer" onmouseover="this.style.color=\'var(--purple)\'" onmouseout="this.style.color=\'var(--text3)\'">✏ Edytuj</button>';
+      html+='<button onclick="deleteUserReview('+r.id+')" style="background:none;border:none;font-size:11px;color:var(--text3);cursor:pointer" onmouseover="this.style.color=\'var(--sakura)\'" onmouseout="this.style.color=\'var(--text3)\'">🗑 Usuń</button>';
+      html+='</div>';
+      html+='</div>';
+    });
+    html+='</div>';
+    el.innerHTML=html;
+    return;
+  }
+
+  // newest mode — load from API
+  el.innerHTML='<div style="color:var(--text3);padding:1.5rem">Ładowanie recenzji...</div>';
+  loadReviewsFromAPI();
+}
+
+function loadReviewsFromAPI(){
+  var el=document.getElementById('reviewsContent');
+  var colors=['linear-gradient(135deg,#7c4dff,#b388ff)','linear-gradient(135deg,#ff6b9d,#ff9ec7)','linear-gradient(135deg,#06d6a0,#00a676)','linear-gradient(135deg,#ffd166,#ffb700)','linear-gradient(135deg,#ff6b35,#ff8c42)','linear-gradient(135deg,#4cc9f0,#4361ee)'];
+
+  // Build user review cards first
+  var myRevCards='';
+  if(user){
+    getUserReviews().filter(function(r){return r.username===user.username;}).slice(0,2).forEach(function(r){
+      var initials=user.username.slice(0,2).toUpperCase();
+      var scoreColor=r.score?'var(--gold)':'var(--text3)';
+      myRevCards+='<div class="rev-card" style="border-color:rgba(255,107,157,.3)">';
+      myRevCards+='<div class="rev-header">';
+      myRevCards+='<div class="rev-avatar" style="background:linear-gradient(135deg,var(--sakura),var(--purple2))">'+initials+'</div>';
+      myRevCards+='<div><div class="rev-name">'+user.username+' <span style="font-size:10px;color:var(--sakura);background:rgba(255,107,157,.1);padding:1px 5px;border-radius:4px;margin-left:3px">Twoja</span></div><div class="rev-meta">'+r.title+'</div></div>';
+      myRevCards+='<div class="rev-score" style="color:'+scoreColor+'">'+( r.score||'—')+'</div>';
+      myRevCards+='</div>';
+      if(r.title){var imgH=r.img?'<img src="'+r.img+'" style="width:18px;height:26px;border-radius:3px;object-fit:cover"> ':' ';myRevCards+='<div class="rev-anime" style="cursor:pointer" onclick="showDetail('+r.mal_id+')">'+imgH+r.title+'</div>';}
+      myRevCards+='<p class="rev-text">'+shortSynopsis(r.text,300)+'</p>';
+      myRevCards+='<div class="rev-footer"><span class="rev-date">'+new Date(r.date).toLocaleDateString('pl-PL')+'</span></div>';
+      myRevCards+='</div>';
+    });
+  }
+
+  jikan('/reviews/anime?page=1').then(function(data){
+    if(!data||!data.data){
+      el.innerHTML='<div class="review-grid">'+myRevCards+staticReviewsHTML()+'</div>';
+      return;
+    }
+    var html='<div class="review-grid">'+myRevCards;
+    data.data.slice(0,9).forEach(function(r,i){
+      var a=r.anime,u=r.user;
+      var initials=(u&&u.username||'A').slice(0,2).toUpperCase();
+      var bg=colors[i%colors.length];
+      var imgHtml='';
+      if(a&&a.images&&a.images.jpg&&a.images.jpg.image_url){
+        imgHtml='<img src="'+a.images.jpg.image_url+'" style="width:18px;height:26px;border-radius:3px;object-fit:cover" loading="lazy"> ';
+      }
+      var animeTitle=a&&a.title||'Anime';
+      var animeId=a&&a.mal_id||0;
+      html+='<div class="rev-card">';
+      html+='<div class="rev-header"><div class="rev-avatar" style="background:'+bg+'">'+initials+'</div>';
+      html+='<div><div class="rev-name">'+(u&&u.username||'Anonimowy')+'</div><div class="rev-meta">Recenzent AniVerse</div></div>';
+      html+='<div class="rev-score">'+(r.score||'—')+'</div></div>';
+      html+='<div class="rev-anime" style="cursor:pointer" onclick="showDetail('+animeId+')">'+imgHtml+animeTitle+'</div>';
+      html+='<p class="rev-text">'+shortSynopsis(r.review||'',300)+'</p>';
+      html+='<div class="rev-footer"><span class="rev-date">'+(r.date?new Date(r.date).toLocaleDateString('pl-PL'):'')+'</span></div>';
+      html+='</div>';
+    });
+    html+='</div>';
+    el.innerHTML=html;
+  });
+}
+
+// ═══════════════════════════════════════════════════════════
+// ESC KEY — close new modals
+// ═══════════════════════════════════════════════════════════
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){
+    closeRatingModal();
+    closeReviewModal();
+    resolveConfirm(false);
+  }
+});
 
 initApp();
 </script>
